@@ -63,7 +63,7 @@ def find_key(pos, cables, plain, cipher):
                                 if e.match(plain, cipher):
                                     print(r1, r2, r3, rf, ring)
 
-def main():
+def trial():
     #random.seed(2)
     cables = random_cables()
     e = create_random_enigma(pos='AAA', cables=cables)
@@ -72,5 +72,16 @@ def main():
     print(c[:64])
     find_key('AAA', cables, p, c)
 
+def brute():
+    # get from Enigma
+    cables = ['IG', 'CH', 'KD', 'FJ', 'EB', 'AM', 'NL']
+
+    # output from typing A's, rotors starting at "AAA"
+    c = 'XEOHPNYJUT'
+
+    p = 'A' * len(c)
+    find_key('AAA', cables, p, c)
+
 if __name__ == '__main__':
-    main()
+    #trial()
+    brute()
