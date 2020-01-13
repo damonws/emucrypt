@@ -68,6 +68,13 @@ class Enigma(object):
 
         return ''.join(data_out)
 
+    def match(self, plain, cipher):
+        for i, p in enumerate(plain):
+            c = self.translate(p)
+            if c != cipher[i]:
+                return False
+        return True
+
 class Enigma4(object):
     def __init__(self, r1, r2, r3, r4, rf, pos=None, ring=None, cables=None):
         if pos is None:
@@ -272,5 +279,14 @@ if __name__ == '__main__':
                 'GWMD' 'RRFC' 'OCOL' 'UDVN' 'QGJW' 'PKWW' 'FUUN' 'HMGU' 'UNOX' 'ZVWR' 'SCFH' 'NWLG'
                 'ERIL' 'XNHJ' 'FURD' 'UUEJ' 'VWSY' 'WSSZ' 'MILI' 'WEGH' 'VFBD' 'OMRO' 'OBCP' 'DHNE'
                 'LHUM' 'PXPE' 'RTXP' 'BJON')
+
+        def test_match(self):
+            eA = Enigma('I', 'II', 'III', 'B')
+            eB = Enigma('I', 'II', 'III', 'B')
+            eC = Enigma('I', 'II', 'III', 'C')
+            p = 'A' * 1600
+            c = eA.translate(p)
+            self.assertTrue(eB.match(p, c))
+            self.assertFalse(eC.match(p, c))
 
     unittest.main()
