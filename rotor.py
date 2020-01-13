@@ -14,6 +14,7 @@ class Rotor(object):
         self.setWiring(wiring)
         self.setNotches(notches)
         self.position = 0
+        self.prev_pos = None
         self.ring = 0
         self.doublestep = doublestep
         if position is not None:
@@ -44,6 +45,9 @@ class Rotor(object):
         return turnover
 
     def activate(self):
+        if self.position == self.prev_pos:
+            return
+        self.prev_pos = self.position
         rpath = {}
         lpath = {}
         position = (self.position - self.ring) % 26
