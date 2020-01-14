@@ -74,10 +74,10 @@ def trial():
 
 def brute():
     # get from Enigma
-    cables = ['IG', 'CH', 'KD', 'FJ', 'EB', 'AM', 'NL']
+    cables = ['YL', 'CT', 'FN']
 
     # output from typing A's, rotors starting at "AAA"
-    c = 'XEOHPNYJUT'
+    c = 'HPXWEUMKZW'
 
     p = 'A' * len(c)
     find_key('AAA', cables, p, c)
