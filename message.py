@@ -35,8 +35,8 @@ def encode(e, i, key, msg, src):
     return sol, out
 
 def main():
-    e = enigma.Enigma('I', 'IV', 'V', 'B', ring='AOA', cables=['YL', 'CT', 'FN'])
-    p = 'A' * 26
+    e = enigma.Enigma('I', 'IV', 'V', 'B', ring='AOA', cables=['AL', 'CT', 'FN', 'OY'])
+    p = 'A' * 40
     c = e.translate(p)
     print(p)
     print(c)
@@ -85,7 +85,7 @@ def main():
     solutions.append(s)
 
     e.setPosition('AAA')
-    p = 'A' * 26
+    p = 'A' * 40
     c = e.translate(p)
     print(p)
     print(c)
@@ -94,6 +94,12 @@ def main():
     print('\n\n'.join(solutions))
     print('\n')
     print('\n\n'.join(ciphers))
+
+    e.setPosition('DWS')
+    p = 'Z' * 300
+    c = e.translate(p)
+    out = textwrap.fill(' '.join(c[i:i+5] for i in range(0, len(c), 5)), width=39)
+    print(out)
 
 if __name__ == '__main__':
     main()
