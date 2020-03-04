@@ -287,4 +287,22 @@ if __name__ == '__main__':
             self.assertEqual(r2.getPosition(), 'F')
             self.assertEqual(r3.getPosition(), 'B')
 
+        def test_ThreeRotorPartialDoublestep(self):
+            r3 = RotorI(position='D', ring='A')
+            r2 = RotorIV(position='J', ring='O', doublestep=True)
+            r1 = RotorV(position='L', ring='A')
+            turnover = r1.step()
+            turnover = r2.step(turnover)
+            r3.step(turnover)
+            self.assertEqual(r3.getPosition(), 'E')
+            self.assertEqual(r2.getPosition(), 'K')
+            self.assertEqual(r1.getPosition(), 'M')
+            r2.setPosition('J')
+            turnover = r1.step()
+            turnover = r2.step(turnover)
+            r3.step(turnover)
+            self.assertEqual(r3.getPosition(), 'F')
+            self.assertEqual(r2.getPosition(), 'K')
+            self.assertEqual(r1.getPosition(), 'N')
+
     unittest.main()

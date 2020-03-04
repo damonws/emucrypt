@@ -289,4 +289,14 @@ if __name__ == '__main__':
             self.assertTrue(eB.match(p, c))
             self.assertFalse(eC.match(p, c))
 
+        def test_half_double_step(self):
+            e = Enigma('I', 'IV', 'V', 'B', pos='FJN', ring='AOA', cables=['AL', 'CT', 'FN', 'OY'])
+            p = e.translate('A')
+            self.assertEqual(p, 'B')
+            self.assertEqual(e.getPosition(), 'GKO')
+            e.setPosition('GJO')
+            p = e.translate('A')
+            self.assertEqual(p, 'Q')
+            self.assertEqual(e.getPosition(), 'HKP')
+
     unittest.main()
