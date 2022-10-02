@@ -3,7 +3,8 @@ import random
 
 import enigma
 
-ROTORS = ('I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII')
+#ROTORS = ('I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII')
+ROTORS = ('I', 'IV', 'V')
 
 def random_rotors():
     all = list(ROTORS)
@@ -54,7 +55,8 @@ def find_key(pos, cables, plain, cipher):
             for r3 in ROTORS:
                 if r3 in (r1, r2):
                     continue
-                for rf in ('B', 'C'):
+                #for rf in ('B', 'C'):
+                for rf in ('B', ):
                     for ring1 in string.ascii_uppercase:
                         for ring2 in string.ascii_uppercase:
                             for ring3 in string.ascii_uppercase:
@@ -73,14 +75,27 @@ def trial():
     find_key('AAA', cables, p, c)
 
 def brute():
+    #cables = ['YL', 'CT', 'FN']
+    #c = 'HPXWEUMKZW'
+    #find_key('AAA', cables, p, c)
+
     # get from Enigma
-    cables = ['YL', 'CT', 'FN']
+    cables = ['AL', 'CT', 'FN', 'IY']
+
+    #c = 'VJPUFSIEOH'
+    #find_key('AAA', cables, p, c)
+
+    #c = 'TWGHOZVFDJ'
+    #find_key('CMW', cables, p, c)
+
+    #c = 'DRJVQKOJNU'
+    #find_key('EBH', cables, p, c)
 
     # output from typing A's, rotors starting at "AAA"
-    c = 'HPXWEUMKZW'
+    c = 'OIZVZSRXOM'
 
     p = 'A' * len(c)
-    find_key('AAA', cables, p, c)
+    find_key('GTO', cables, p, c)
 
 if __name__ == '__main__':
     #trial()
